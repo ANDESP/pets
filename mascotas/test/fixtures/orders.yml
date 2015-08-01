@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2015-07-25 00:49:34
+  pacient_id: 
+  product_id: 
+  service_id: 
+
+two:
+  fecha: 2015-07-25 00:49:34
+  pacient_id: 
+  product_id: 
+  service_id: 

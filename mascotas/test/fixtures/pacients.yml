@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mascota: MyString
+  client_id: 
+
+two:
+  mascota: MyString
+  client_id: 

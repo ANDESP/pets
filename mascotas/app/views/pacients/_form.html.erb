@@ -1,0 +1,35 @@
+<%= form_for @pacient, :html => { :class => "form-horizontal pacient" } do |f| %>
+
+    <% if @pacient.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@pacient.errors.count, "error") %> prohibited this pacient from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @pacient.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :mascota, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :mascota, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pacient[:mascota]) %>
+  </div>
+  <div class="control-group"> 
+    <%= f.label :client_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:pacient, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>    
+    </div>
+  </div>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), pacients_path, :class => 'btn btn-default' %>
+
+<% end %>
