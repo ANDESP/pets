@@ -6,7 +6,12 @@ class AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all
   end
-
+  
+  def dir#(appointment_params)
+    #@appointment.create(appointment_params)
+    Appointment.create(fecha:"2015/08/13", client_id:"1")
+  end
+  
   # GET /appointments/1
   # GET /appointments/1.json
   def show

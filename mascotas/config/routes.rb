@@ -5,6 +5,17 @@ Rails.application.routes.draw do
   resources :services
   resources :pacients
   resources :clients
+  
+  # resources :appointments do
+  #   put :dir, :on => :collection
+  # end
+  
+resources :appointments do
+  member do
+    post :dir
+  end
+end  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

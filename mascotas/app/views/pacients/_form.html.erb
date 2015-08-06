@@ -1,3 +1,4 @@
+<%- #simple_form_for @pacient, :html => { :class => "form-horizontal pacient" } do |f| %>
 <%= form_for @pacient, :html => { :class => "form-horizontal pacient" } do |f| %>
 
     <% if @pacient.errors.any? %>
@@ -18,14 +19,15 @@
   <div class="control-group">
     <%= f.label :mascota, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :mascota, :class => 'form-control' %>
+      <%= f.text_field :mascota, :class => 'form-control', label: 'Su mascota por favor' %>
     </div>
     <%= error_span(@pacient[:mascota]) %>
   </div>
   <div class="control-group"> 
-    <%= f.label :client_id, :class => 'control-label' %>
+    <%= f.label :client_id, :class => 'control-label' -%>
     <div class="controls">
-      <%= collection_select(:pacient, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>    
+      <%-  # f.association :client,  include_blank: false %>
+      <%= collection_select(:pacient, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>          
     </div>
   </div>
 

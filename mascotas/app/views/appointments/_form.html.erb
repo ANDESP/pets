@@ -30,11 +30,11 @@
     <%= error_span(@appointment[:client_id]) %>
   </div>
   
-<input type="text" data-datepicker-format="dd/mm/yyyy" data-datepicker-nodefault="false" />
-
+  <input type="text" data-datepicker-format="dd/mm/yyyy" data-datepicker-nodefault="false" />
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            appointments_path, :class => 'btn btn-default' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), appointments_path, :class => 'btn btn-default' %>
 
 <% end %>
+
+
