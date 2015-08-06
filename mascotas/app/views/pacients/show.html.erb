@@ -9,6 +9,7 @@
   <dt><strong><%= model_class.human_attribute_name(:client_id) %>:</strong></dt>
   <dd><%= @pacient.client_id %></dd>
 </dl>
+<%= image_tag @pacient.avatar1.url(:thumb) %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               pacients_path, :class => 'btn btn-default'  %>
