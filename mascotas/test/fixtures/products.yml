@@ -3,9 +3,9 @@
 one:
   producto: MyString
   costo: 9.99
-  pacient_id: 
+  client_id: 
 
 two:
   producto: MyString
   costo: 9.99
-  pacient_id: 
+  client_id: 

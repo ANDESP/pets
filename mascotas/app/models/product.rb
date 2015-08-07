@@ -1,3 +1,3 @@
 class Product < ActiveRecord::Base
-  belongs_to :pacient
+  belongs_to :client
 end

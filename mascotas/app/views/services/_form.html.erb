@@ -1,45 +1,16 @@
-<%= form_for @service, :html => { :class => "form-horizontal service" } do |f| %>
-
-    <% if @service.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @service.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="control-group">
-    <%= f.label :servicio, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :servicio, :class => 'form-control' %>
-    </div>
-    <%= error_span(@service[:servicio]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :costo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :costo, :class => 'form-control' %>
-    </div>
-    <%= error_span(@service[:costo]) %>
-  </div>
-  <div class="control-group">
-    <%= f.label :pacient_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :pacient_id, :class => 'form-control' %>
-    </div>
-    <%= error_span(@service[:pacient_id]) %>
-  </div>
-
-
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+<%= simple_form_for @service, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :servicio %>
+  <%= error_span(@service[:servicio]) %>
+  <%= f.input :costo %>
+  <%= error_span(@service[:costo]) %>
+  <%- #f.input :client_id %>
+<%= f.label :client_id, :class => 'control-label' -%>    
+  <div class="controls">
+  <%= collection_select(:servicio, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>        
+</div>
+  <%= error_span(@service[:client_id]) %>
+<br>
+  <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            services_path, :class => 'btn btn-default' %>
-
+                services_path, :class => 'btn btn-default' %>
 <% end %>

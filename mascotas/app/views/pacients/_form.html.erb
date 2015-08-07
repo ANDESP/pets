@@ -1,6 +1,6 @@
-<%- #simple_form_for @pacient, :html => { :class => "form-horizontal pacient" } do |f| %>
-<%- # form_for @pacient, :html => { :class => "form-horizontal pacient" } do |f| %>
-<%= simple_form_for @pacient, html: {multipart: true}  do |f| %>
+<%= simple_form_for @pacient, :html => { :class => "form-horizontal pacient" } do |f| %>
+<%- #form_for @pacient, :html => { :class => "form-horizontal pacient" } do |f| %>
+<%- # simple_form_for @pacient, html: {multipart: true}  do |f| %>
     <% if @pacient.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">

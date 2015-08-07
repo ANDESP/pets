@@ -1,3 +1,3 @@
 class Service < ActiveRecord::Base
-  belongs_to :pacient
+  belongs_to :client
 end
