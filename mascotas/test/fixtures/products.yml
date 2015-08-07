@@ -3,9 +3,7 @@
 one:
   producto: MyString
   costo: 9.99
-  client_id: 
 
 two:
   producto: MyString
   costo: 9.99
-  client_id: 

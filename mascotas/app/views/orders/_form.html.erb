@@ -1,18 +1,27 @@
 <%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :fecha %>
   <%= error_span(@order[:fecha]) %>
-  <%- # f.input :client_id %>
+  <%- #f.input :client_id %>
 <%= f.label :client_id, :class => 'control-label' -%>  
   <div class="controls">
-  <%= collection_select(:servicio, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>        
-</div>
+  <%= collection_select(:order, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>      
+  </div>
   
   <%= error_span(@order[:client_id]) %>
-  <%= f.input :product_id %>
+  <%- # f.input :product_id %>
+  <%= f.label :product_id, :class => 'control-label' -%>  
+  <div class="controls">
+  <%= collection_select(:order, :product_id, Product.all, :id, :producto, {}, {:multiple=>false}) %>      
+  </div>
   <%= error_span(@order[:product_id]) %>
-  <%= f.input :service_id %>
-  <%= error_span(@order[:service_id]) %>
 
+  <%- #f.input :service_id %>
+  <%= f.label :service_id, :class => 'control-label' -%>  
+  <div class="controls">
+  <%= collection_select(:order, :service_id, Service.all, :id, :servicio, {}, {:multiple=>false}) %>      
+  </div>
+  <%= error_span(@order[:service_id]) %>
+<br>
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 orders_path, :class => 'btn btn-default' %>

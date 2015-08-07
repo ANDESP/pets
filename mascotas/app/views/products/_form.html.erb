@@ -3,14 +3,8 @@
   <%= error_span(@product[:producto]) %>
   <%= f.input :costo %>
   <%= error_span(@product[:costo]) %>
-  <%- # f.input :client_id %>
-  <%- #f.association :client,  include_blank: false %>
-<%= f.label :client_id, :class => 'control-label' -%>  
-  <div class="controls">
-  <%= collection_select(:producto, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>      
-  </div>
-  <%= error_span(@product[:client_id]) %>
-<br>
+
   <%= f.button :submit, :class => 'btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),products_path, :class => 'btn btn-default' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                products_path, :class => 'btn btn-default' %>
 <% end %>

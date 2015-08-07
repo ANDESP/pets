@@ -1,6 +1,20 @@
+<script>
+$(document).ready(function(){
+	$("#envio").click(function(e){
+		e.preventDefault();
+		var data1 = $("#texto1").val();
+		var data2 = $("#texto2").val();
+
+    alert ("Hola mundo");
+//		$post("/appointments/dir", {nombre: data1, apellido: data2}, function(data))
+		$.post("/appointments/", {fecha: "01/01/2015", nombre: "dos"}, function(data){alert ("bien");});
+	});
+});
+</script>
+
 <%- model_class = Appointment -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%= "Citas".titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -18,7 +32,7 @@
         <td><%= link_to appointment.id, appointment_path(appointment) %></td>
         <td><%= appointment.fecha %></td>
         <td><%= appointment.client_id %></td>
-        <td><%=l appointment.created_at %></td>
+        <td><%= l appointment.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_appointment_path(appointment), :class => 'btn btn-default btn-xs' %>
@@ -33,6 +47,87 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_appointment_path,
-            :class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_appointment_path, :class => 'btn btn-primary' %>
+            
+  <%- #link_to "UGrabar", :controller => :appointments, :action => :dir %>
+  <%- # link_to("Test", dir_appointments_path(fecha: "2015/08/13 08:00", client_id: "1"), method: :post, remote: true ) %>    
+
+  <% # button_to 'Save', "/appointments#dir?fecha=2015/08/13?client_id=1"  , :method=>:post %>
+
+  <%- #link_to "Articles", appointment_dir, fecha: "2015/08/13 08:00", client_id: "1" %>
+  <%- #link_to 'Tag it!', {:controller => "appointments", :action => "dir", :fecha => "2015/08/13", :client_id => "1"}, :method => "post" %>    
+<!--    <button>Add</button><button>Del</button></button>-->
+<!--    <a id="envio" href="#">reg</a>-->
+<!--<a href="#" onclick="this.style.backgroundColor='#990000'">Paint it red</a>-->
+<!--<a href="#" onclick="paintIt(this, '#990000')">Paint it red</a>-->
+<!--<button id="users" class="users">hjs</button>    -->
+<br>
+<br>
+<div>Cliente:<%= collection_select(:appointment, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %></div>
+  <br>
+<table  class="table" >
+	<thead>
+		<tr>
+			<th>Hora</th>
+			<th>Lunes</th>
+			<th>Martes</th>
+			<th>Miercoles</th>
+			<th>Jueves</th>
+			<th>Viernes</th>
+			<th>Sábado</th>
+			<th>Domingo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>8:00 am</td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r11" href="#">+</a><a class='btn btn-xs btn-danger' id="b11" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r12" href="#">+</a><a class='btn btn-xs btn-danger' id="b12" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r13" href="#">+</a><a class='btn btn-xs btn-danger' id="b13" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r14" href="#">+</a><a class='btn btn-xs btn-danger' id="b14" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r15" href="#">+</a><a class='btn btn-xs btn-danger' id="b15" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r16" href="#">+</a><a class='btn btn-xs btn-danger' id="b16" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r17" href="#">+</a><a class='btn btn-xs btn-danger' id="b17" href="#">-&nbsp;</a></td>
+		</tr>
+		<tr>
+			<td>9:00 am</td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r21" href="#">+</a><a class='btn btn-xs btn-danger' id="b21" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r22" href="#">+</a><a class='btn btn-xs btn-danger' id="b22" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r23" href="#">+</a><a class='btn btn-xs btn-danger' id="b23" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r24" href="#">+</a><a class='btn btn-xs btn-danger' id="b24" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r25" href="#">+</a><a class='btn btn-xs btn-danger' id="b25" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r26" href="#">+</a><a class='btn btn-xs btn-danger' id="b26" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r27" href="#">+</a><a class='btn btn-xs btn-danger' id="b27" href="#">-&nbsp;</a></td>
+		</tr>
+		<tr>
+			<td>10:00 am</td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r31" href="#">+</a><a class='btn btn-xs btn-danger' id="b31" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r32" href="#">+</a><a class='btn btn-xs btn-danger' id="b32" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r33" href="#">+</a><a class='btn btn-xs btn-danger' id="b33" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r34" href="#">+</a><a class='btn btn-xs btn-danger' id="b34" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r35" href="#">+</a><a class='btn btn-xs btn-danger' id="b35" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r36" href="#">+</a><a class='btn btn-xs btn-danger' id="b36" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r37" href="#">+</a><a class='btn btn-xs btn-danger' id="b37" href="#">-&nbsp;</a></td>
+		</tr>
+		<tr>
+			<td>11:00 am</td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r41" href="#">+</a><a class='btn btn-xs btn-danger' id="b41" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r42" href="#">+</a><a class='btn btn-xs btn-danger' id="b42" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r43" href="#">+</a><a class='btn btn-xs btn-danger' id="b43" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r44" href="#">+</a><a class='btn btn-xs btn-danger' id="b44" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r45" href="#">+</a><a class='btn btn-xs btn-danger' id="b45" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r46" href="#">+</a><a class='btn btn-xs btn-danger' id="b46" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r47" href="#">+</a><a class='btn btn-xs btn-danger' id="b47" href="#">-&nbsp;</a></td>
+		</tr>
+		<tr>
+			<td>12:00 am</td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r51" href="#">+</a><a class='btn btn-xs btn-danger' id="b51" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r52" href="#">+</a><a class='btn btn-xs btn-danger' id="b52" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r53" href="#">+</a><a class='btn btn-xs btn-danger' id="b53" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r54" href="#">+</a><a class='btn btn-xs btn-danger' id="b54" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r55" href="#">+</a><a class='btn btn-xs btn-danger' id="b55" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r56" href="#">+</a><a class='btn btn-xs btn-danger' id="b56" href="#">-&nbsp;</a></td>
+			<td>Libre<br><a class='btn btn-xs btn-success' id="r57" href="#">+</a><a class='btn btn-xs btn-danger' id="b57" href="#">-&nbsp;</a></td>
+		</tr>
+	</tbody>
+</table>

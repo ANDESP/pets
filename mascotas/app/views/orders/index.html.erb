@@ -19,9 +19,12 @@
       <tr>
         <td><%= link_to order.id, order_path(order) %></td>
         <td><%= order.fecha %></td>
-        <td><%= order.client_id %></td>
-        <td><%= order.product_id %></td>
-        <td><%= order.service_id %></td>
+        <!--<td><%#= order.client_id %></td>-->
+        <td><%= Client.find(order.client_id).nombre %></td>
+        <!--<td><%#= order.product_id %></td>-->
+        <td><%= Product.find(order.product_id).producto %></td>
+        <!--<td><%#= order.service_id %></td>-->
+        <td><%= Service.find(order.service_id).servicio %></td>
         <td><%=l order.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

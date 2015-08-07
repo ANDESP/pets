@@ -1,3 +1,5 @@
 class Product < ActiveRecord::Base
-  belongs_to :client
+    validates :producto, presence: true
+    validates :producto, length: { minimum: 5 }
+    validates :costo, presence: true
 end

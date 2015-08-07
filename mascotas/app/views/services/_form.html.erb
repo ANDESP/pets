@@ -3,13 +3,7 @@
   <%= error_span(@service[:servicio]) %>
   <%= f.input :costo %>
   <%= error_span(@service[:costo]) %>
-  <%- #f.input :client_id %>
-<%= f.label :client_id, :class => 'control-label' -%>    
-  <div class="controls">
-  <%= collection_select(:servicio, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>        
-</div>
-  <%= error_span(@service[:client_id]) %>
-<br>
+
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 services_path, :class => 'btn btn-default' %>

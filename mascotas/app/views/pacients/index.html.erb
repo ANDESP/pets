@@ -9,6 +9,7 @@
       <th><%= model_class.human_attribute_name(:mascota) %></th>
       <th><%= model_class.human_attribute_name(:client_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>IMG</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,6 +20,7 @@
         <td><%= pacient.mascota %></td>
         <td><%= Client.find(pacient.client_id).nombre %></td>
         <td><%= pacient.created_at %></td>
+        <td><%= image_tag pacient.avatar1.url(:thumb) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_pacient_path(pacient), :class => 'btn btn-default btn-xs' %>

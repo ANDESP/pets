@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807185520) do
+ActiveRecord::Schema.define(version: 20150807193729) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "fecha"
@@ -58,28 +58,20 @@ ActiveRecord::Schema.define(version: 20150807185520) do
   create_table "products", force: :cascade do |t|
     t.string   "producto",   limit: 255
     t.decimal  "costo",                  precision: 10
-    t.integer  "client_id",  limit: 4
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
-
-  add_index "products", ["client_id"], name: "index_products_on_client_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "servicio",   limit: 255
     t.decimal  "costo",                  precision: 10
-    t.integer  "client_id",  limit: 4
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
-
-  add_index "services", ["client_id"], name: "index_services_on_client_id", using: :btree
 
   add_foreign_key "appointments", "clients"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "services"
   add_foreign_key "pacients", "clients"
-  add_foreign_key "products", "clients"
-  add_foreign_key "services", "clients"
 end

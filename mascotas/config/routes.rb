@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :orders
-  resources :appointments
   resources :products
   resources :services
+  resources :appointments
+  resources :products
   resources :products
   resources :pacients
   resources :clients
@@ -30,8 +31,7 @@ end
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
+  # 
   # Example resource route with options:
   #   resources :products do
   #     member do

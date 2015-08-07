@@ -1,3 +1,5 @@
 class Service < ActiveRecord::Base
-  belongs_to :client
+    validates :servicio, presence: true
+    validates :servicio, length: { minimum: 5 }
+    validates :costo, presence: true
 end

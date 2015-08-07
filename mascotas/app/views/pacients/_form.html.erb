@@ -28,8 +28,13 @@
     <div class="controls">
       <%-  # f.association :client,  include_blank: false %>
       <%= collection_select(:pacient, :client_id, Client.all, :id, :nombre, {}, {:multiple=>false}) %>    
-      <%= f.input :avatar1, as: :file %>
     </div>
+  </div>
+  <br>
+  <div class="control-group"> 
+    <div class="controls">
+<%= image_tag @pacient.avatar1.url(:thumb) %>      
+      <%= f.input :avatar1, as: :file %></div>
   </div>
 
   <%= f.submit nil, :class => 'btn btn-primary' %>
